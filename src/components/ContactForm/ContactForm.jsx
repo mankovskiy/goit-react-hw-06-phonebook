@@ -1,30 +1,22 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { handleAddContact } from 'redux/contactsSlice';
 import { Form } from './ContactForm.stuled';
 import { AddBtn } from './ContactForm.stuled';
 import { Input } from './ContactForm.stuled';
-// import { Formik, Form, Field } from 'formik';
-import { nanoid } from 'nanoid';
+
 import PropTypes from 'prop-types';
 import { ContactFormLabel } from './ContactForm.stuled';
 
-// const initialValues = { name: '', number: '' };
-
-export function ContactForm({ onAddContact }) {
+export function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
   const handleChangeInput = e => {
-    const { name, value } = e.target;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        return;
-    }
+    console.log(e.target);
+    const { value } = e.target;
+    e.target.name === 'name' ? setName(value) : setNumber(value);
   };
 
   const handleSubmit = e => {
@@ -32,10 +24,8 @@ export function ContactForm({ onAddContact }) {
     const contact = {
       name,
       number,
-      id: nanoid(5),
     };
-
-    onAddContact(contact);
+    dispatch(handleAddContact(contact));
     reset();
   };
 
@@ -45,7 +35,6 @@ export function ContactForm({ onAddContact }) {
   };
 
   return (
-    // <Formik onSubmit={this.handleSubmit} initialValues={initialValues}>
     <Form onSubmit={handleSubmit}>
       <ContactFormLabel>Name</ContactFormLabel>
       <Input
@@ -69,7 +58,6 @@ export function ContactForm({ onAddContact }) {
       />
       <AddBtn type="submit">add contact</AddBtn>
     </Form>
-    // </Formik>
   );
 }
 

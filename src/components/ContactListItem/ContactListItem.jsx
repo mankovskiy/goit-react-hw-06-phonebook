@@ -1,12 +1,21 @@
 import { DeleteBtn } from './ContactListItem.styled';
+import { useDispatch } from 'react-redux';
+import { handleDeleteContact } from 'redux/contactsSlice';
+
 import PropTypes from 'prop-types';
-export function ContactListItem({ id, name, number, handleDeleteContact }) {
+
+export function ContactListItem({ id, name, number }) {
+  const dispatch = useDispatch();
+
+  const deleteContact = () => {
+    dispatch(handleDeleteContact(id));
+  };
   return (
-    <li>
+    <>
       <p>name:{name} </p>
       <p>number:{number} </p>
-      <DeleteBtn onClick={() => handleDeleteContact(id)}>delete</DeleteBtn>
-    </li>
+      <DeleteBtn onClick={deleteContact}>delete</DeleteBtn>
+    </>
   );
 }
 

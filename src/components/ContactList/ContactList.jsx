@@ -1,7 +1,17 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 
-export const ContactList = ({ contacts, handleDeleteContact }) => {
+export const ContactList = () => {
+  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
+  console.log(filter);
+
+  const filterValue = filter.toLowerCase().trim();
+  console.log(filterValue);
+  const filterContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filterValue)
+  );
   return (
     <>
       {contacts.length === 0 && (
@@ -10,15 +20,17 @@ export const ContactList = ({ contacts, handleDeleteContact }) => {
         </p>
       )}
       <ul>
-        {contacts.map(({ id, name, number }) => {
+        {filterContacts.map(({ id, name, number }) => {
           return (
-            <ContactListItem
-              key={id}
-              id={id}
-              name={name}
-              number={number}
-              handleDeleteContact={handleDeleteContact}
-            />
+            <li key={id}>
+              <ContactListItem
+                id={id}
+                name={name}
+                number={number}
+
+                // handleDeleteContact={handleDeleteContact}
+              />
+            </li>
           );
         })}
       </ul>

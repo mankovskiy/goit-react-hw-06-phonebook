@@ -1,9 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { setFilterValue } from 'redux/filterSlice';
+import { setFilterValue } from 'redux/contactsSlice';
+
 export const Filter = () => {
   const dispatch = useDispatch();
-  const handleSetFilterValue = ({ target: { value } }) => {
-    console.log({ target: { value } });
+
+  const handleSetFilterValue = e => {
+    const value = e.target.value;
+    console.log(value);
+
     dispatch(setFilterValue(value));
   };
   return (

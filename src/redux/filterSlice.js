@@ -1,18 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+// import { createSlice } from '@reduxjs/toolkit';
+// // import persistReducer from 'redux-persist/es/persistReducer';
 
-const filtrInitialState = '';
+// const filtrInitialState = '';
 
-export const filterSlice = createSlice({
-  name: 'filter',
-  initialState: filtrInitialState,
-  reducers: {
-    setFilterValue: {
-      reducer(state, action) {
-        return (state = action.payload);
-      },
-    },
-  },
-});
+// export const filterSlice = createSlice({
+//   name: 'filter',
+//   initialState: filtrInitialState,
+//   reducers: {
+//     setFilterValue: {
+//       reducer(state, action) {
+//         return (state = action.payload);
+//       },
+//     },
+//   },
+// });
 
-export const { setFilterValue } = filterSlice.actions;
-export const filterReduser = filterSlice.reducer;
+// export const { setFilterValue } = filterSlice.actions;
+// export const filterReducer = filterSlice.reducer;

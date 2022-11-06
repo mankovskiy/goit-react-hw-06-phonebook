@@ -25,6 +25,7 @@ export function ContactForm() {
       name,
       number,
     };
+    console.log(contact);
     dispatch(handleAddContact(contact));
     reset();
   };

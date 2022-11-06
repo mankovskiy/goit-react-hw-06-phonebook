@@ -3,15 +3,16 @@ import { useSelector } from 'react-redux';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 
 export const ContactList = () => {
-  const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter);
-  console.log(filter);
+  const { contacts } = useSelector(state => state.contacts);
+
+  const filter = useSelector(state => state.contacts.filter);
 
   const filterValue = filter.toLowerCase().trim();
-  console.log(filterValue);
+
   const filterContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filterValue)
   );
+
   return (
     <>
       {contacts.length === 0 && (
@@ -23,13 +24,7 @@ export const ContactList = () => {
         {filterContacts.map(({ id, name, number }) => {
           return (
             <li key={id}>
-              <ContactListItem
-                id={id}
-                name={name}
-                number={number}
-
-                // handleDeleteContact={handleDeleteContact}
-              />
+              <ContactListItem id={id} name={name} number={number} />
             </li>
           );
         })}

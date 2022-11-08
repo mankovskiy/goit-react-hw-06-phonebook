@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { ContactListItem } from 'components/ContactListItem/ContactListItem';
+import { ContactListItem } from '../ContactListItem/ContactListItem';
+import { List } from './ContactList.styled';
 
 export const ContactList = () => {
   const { contacts } = useSelector(state => state.contacts);
@@ -23,9 +24,9 @@ export const ContactList = () => {
       <ul>
         {filterContacts.map(({ id, name, number }) => {
           return (
-            <li key={id}>
+            <List key={id}>
               <ContactListItem id={id} name={name} number={number} />
-            </li>
+            </List>
           );
         })}
       </ul>

@@ -8,15 +8,15 @@ export const ContactFormLabel = styled.label`
 
 export const Form = styled.form`
   display: block;
-
-  width: 480px;
+  text-align: center;
 `;
 
 export const AddBtn = styled.button`
   padding: 3px;
-
-  display: block;
   margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Input = styled.input``;

@@ -7,7 +7,7 @@ import { Box } from './Box/Box';
 
 export function App() {
   return (
-    <>
+    <Box textAlign="center">
       <Box p={20}>
         <Box as="h2">Phonebook</Box>
 
@@ -18,6 +18,6 @@ export function App() {
         <Filter />
         <ContactList />
       </Box>
-    </>
+    </Box>
   );
 }
